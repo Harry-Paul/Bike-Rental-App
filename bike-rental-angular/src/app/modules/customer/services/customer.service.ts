@@ -11,8 +11,18 @@ const BASIC_URL = 'http://localhost:8080'
 export class CustomerService {
   constructor(private http: HttpClient) {}
 
+  searchBike(searchDto: any): Observable<any> {
+    return this.http.post(`${BASIC_URL}/api/default/bike/search`, searchDto)
+  }
+
   getAllBikes(): Observable<any> {
     return this.http.get(`${BASIC_URL}/api/customer/bikes`, {
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
+  getAllBikesbyId(): Observable<any> {
+    return this.http.get(`${BASIC_URL}/api/customer/bike/bookings/{user_id}`, {
       headers: this.createAuthorizationHeader()
     })
   }

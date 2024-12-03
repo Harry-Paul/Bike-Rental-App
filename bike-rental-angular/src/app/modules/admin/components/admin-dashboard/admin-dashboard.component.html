@@ -1,32 +1,31 @@
+
 <div style="background-color: #f8f8f8; min-height: 91vh; padding: 24px;">
   <div style="padding-top: 10px;"></div>
 
-  <div style="margin-top: 10px;" class="child" *ngFor="let car of cars">
-    <div nz-row style="background-color: #ccc; padding: 24px;">
-      <div nz-col nzSpan="8">
-        <img class="profile" style="height: 130px; border-radius: 10px; object-fit: cover;" [src]="car.processedImage"
-          alt="profile">
-      </div>
+  <div nz-row [nzGutter]="24"> <!-- Added gutter for spacing between bikeds -->
+    <div nz-col nzSpan="6" *ngFor="let bike of bikes">
+		<div
+style="background-color: #fff; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); margin-bottom: 24px;">
+        <img
+class="profile"
+style="width: 100%; height: 250px; object-fit: cover;"
+		[src]="bike.processedImage"
+alt="profile">
+        
+        <div style="padding: 16px;">
+          <h2 style="cursor: pointer; color: #108ee9;">{{bike.brand}} - {{bike.name}}</h2>
+<p>{{bike.description}}</p>
 
-      <div nz-col nzSpan="16">
-        <h2 style="cursor: pointer; color: #108ee9;">{{car.brand}} - {{car.name}}</h2>
+          <hr>
+          <h5>Price: <b>${{bike.price}}</b> - Color: <b>{{bike.color}}</b> - Transmission: <b>{{bike.transmission}}</b> - Type: <b>{{bike.type}}</b> - Year: <b>{{bike.year}}</b></h5>
 
-        <p>{{car.description}}</p>
-
-        <hr>
-
-        <h5>Price: <b>${{car.price}}</b> - Color : <b>{{car.color}}</b> - Transmission : <b>{{car.transmission}}</b> -
-          Type : <b>{{car.type}}</b> - Year : <b>{{car.year}}</b>
-        </h5>
-
-        <div style="float: right;">
-          <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary"
-            routerLink="/admin/car/{{car.id}}">Update</button>
-
-          <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary" nzDanger
-            (click)="deleteCar(car.id)">Delete</button>
+          <div style="text-align: right; margin-top: 10px;">
+            <button nzSize="small" nz-button nzType="primary" routerLink="/admin/bike/{{bike.id}}" style="margin-right: 8px;">Update</button>
+            <button nzSize="small" nz-button nzType="primary" nzDanger>Delete</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+

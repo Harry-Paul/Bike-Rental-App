@@ -1,34 +1,15 @@
 <div style="margin-top: 50px; padding: 40px;">
   <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
     <div class="flex flex-col items-center">
-      <h1 class="text-xl font-bold text-gray-800 mb-4 text-center">Post Car</h1>
+      <h1 class="text-xl font-bold text-gray-800 mb-4 text-center">Search Bike</h1>
 
-      <form nz-form [formGroup]="postCarForm">
-        <div class="pb-6">
-          <div class="profile-badge">
-            <label for="upload_profile_image" class="upload-label" *ngIf="selectedFile">
-              <img class="profile" [src]="imagePreview" alt="profile" />
-            </label>
-
-            <input type="file" nz-button nzType="primary" id="upload_profile_image" (change)="onFileSelected($event)"
-              accept="image/*" />
-          </div>
-        </div>
-
+      <form nz-form [formGroup]="searchBikeForm">
         <div>
           <nz-form-item>
             <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required">
               <nz-select formControlName="brand" nzShowSearch nzAllowClear nzPlaceHolder="Select a Brand">
                 <nz-option *ngFor="let brand of listOfBrands" nzLabel="{{brand}}" nzValue="{{brand}}"></nz-option>
               </nz-select>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-
-        <div>
-          <nz-form-item>
-            <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required">
-              <input nz-input placeholder="Name" formControlName="name" />
             </nz-form-control>
           </nz-form-item>
         </div>
@@ -64,34 +45,30 @@
           </nz-form-item>
         </div>
 
-        <div>
-          <nz-form-item>
-            <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required">
-              <input formControlName="year" nz-input placeholder="Modal Year" />
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-
-        <div>
-          <nz-form-item>
-            <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required">
-              <input formControlName="price" nz-input placeholder="Price" />
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-
-        <div>
-          <nz-form-item>
-            <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required">
-              <textarea formControlName="description" rows="1" nz-input placeholder="Description"></textarea>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-
-        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="postCar()">
-          Post Car
+        <button nz-button class="login-form-button login-form-margin w-full" [nzType]="'primary'" (click)="searchBike()">
+          Search
         </button>
       </form>
     </div>
   </nz-spin>
 </div>
+
+<div class="container mx-auto px-4 bg-gray-100 py-8" *ngIf="Bikes.length > 0">
+  <h1 class="text-xl font-bold text-gray-800 mb-4 text-center">Bike List</h1>
+
+  <div class="flex flex-wrap">
+    <div class="w-1/4 p-4" *ngFor="let Bike of Bikes">
+      <div class="bg-white shadow-lg rounded-lg p-4">
+        <img [src]="Bike.processedImage" alt="Bike" class="w-full h-32 object-cover object-center">
+
+        <div class="mt-4">
+          <h2 class="text-gray-900 title-font text-lg font-medium">{{Bike.name}}</h2>
+          <p class="text-gray-500">{{Bike.brand}}</p>
+          <p class="text-gray-500">{{Bike.type}}</p>
+          <p class="text-gray-500">{{Bike.transmission}}</p>
+          <p class="text-gray-500">{{Bike.color}}</p>
+          <p class="text-gray-500">{{Bike.price}}</p>
+        </div>
+      </div>
+    </div>
+  </div>

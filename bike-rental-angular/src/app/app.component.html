@@ -1,7 +1,7 @@
 <div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
   <div class="custom-navbar">
     <div class="navbar-title">
-      <a routerLink="/login">Car Rental Service</a>
+      <a routerLink="/login">Bike Rental Service</a>
     </div>
 
     <div class="nav-links">
@@ -20,7 +20,7 @@
 
     <div class="nav-links">
       <a routerLink="/admin/dashboard" routerLinkActive="active"> Dashboard </a>
-      <a routerLink="/admin/car" routerLinkActive="active"> Post Car </a>
+      <a routerLink="/admin/bike" routerLinkActive="active"> Post Bike </a>
       <a routerLink="/admin/bookings" routerLinkActive="active"> Bookings </a>
       <a routerLink="/admin/search" routerLinkActive="active"> Search </a>
 
@@ -32,7 +32,7 @@
 <div *ngIf="isCustomerLoggedIn">
   <div class="custom-navbar">
     <div class="navbar-title">
-      <a routerLink="/login">LoggedIn Customer</a>
+      <a routerLink="/login">Customer</a>
     </div>
 
     <div class="nav-links">

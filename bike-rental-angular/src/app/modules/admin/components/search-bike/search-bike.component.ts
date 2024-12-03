@@ -10,12 +10,29 @@ import { AdminService } from '../../services/admin.service'
 export class SearchBikeComponent {
   searchBikeForm!: FormGroup
   listOfOption: Array<{ label: string; value: string }> = []
-  listOfBrands = ['Toyota', 'Honda', 'BMW', 'Mercedes', 'Audi', 'Lexus']
-  listOfType = ['Sports bike', 'Diesel', 'Crossover', 'Luxury Bike']
-  listOfColor = ['Red', 'Blue', 'Brown', 'Green']
-  listOfTransmission = ['Manual', 'Automatic']
+  listOfBrands = [
+    'Yamaha', 'Honda', 'Suzuki', 'Kawasaki', 
+    'Ducati', 'BMW', 'Harley-Davidson', 
+    'Royal Enfield', 'Triumph', 'KTM', 
+    'Aprilia', 'Hero', 'Bajaj', 'TVS'
+  ];
+  
+  listOfType = [
+    'Sports Bike', 'Cruiser', 'Naked Bike', 
+    'Commuter', 'Adventure Bike', 'Scrambler'
+  ];
+  
+  listOfColor = [
+    'Blue', 'Red', 'Black', 'Green', 
+    'White', 'Silver', 'Orange'
+  ];
+  
+  listOfTransmission = [
+    'Manual', 'Automatic'
+  ];
+  
   isSpinning = false
-  bikes: any[] = []
+  Bikes: any[] = []
 
   constructor(
     private fb: FormBuilder,
@@ -39,7 +56,7 @@ export class SearchBikeComponent {
 
         bikeDtoList.forEach((bike: any) => {
           bike.processedImage = `data:image/jpeg;base64,${bike.returnedImage}`
-          this.bikes.push(bike)
+          this.Bikes.push(bike)
         })
       },
       err => {

@@ -13,10 +13,24 @@ export class MyBookingsComponent {
 
   bookings: any[] = []
   isSpinning = false
+  bikes: any[] = []
+  bikes1: any[] = []
 
   ngOnInit() {
-    this.getBookingsByUserId()
+    this.getBookingsByUserId();
+    
   }
+
+  getAllBikes() {
+    console.log("rty",this.bookings);
+		this.bookings.forEach(booking=>{
+      this.service.getBikeById(booking.bikeId).subscribe(res=>{
+        res.returnedImage = `data:image/jpeg;base64,${res.returnedImage}`
+        this.bikes.push(res);
+      })
+    })
+    console.log(this.bikes)
+	}
 
   private getBookingsByUserId() {
     this.isSpinning = true
@@ -24,6 +38,8 @@ export class MyBookingsComponent {
     this.service.getBookingsByUserId().subscribe(
       data => {
         this.bookings = data
+        console.log(this.bookings);
+        this.getAllBikes();
         this.isSpinning = false
       },
       error => {
@@ -31,5 +47,6 @@ export class MyBookingsComponent {
         this.isSpinning = false
       }
     )
+    
   }
 }
