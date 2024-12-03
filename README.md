@@ -1,1 +1,1 @@
-## Car Rental Project (Fullstack) with Spring Boot, Angular, MySQL
+## Bike Rental Project (Fullstack) with Spring Boot, Angular and MySQL
